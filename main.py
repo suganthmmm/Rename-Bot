@@ -20,7 +20,7 @@ from helpers.uploader import UploadFile, UploadVideo, UploadAudio
 from helpers.database.add_user import AddUserToDatabase
 from helpers.display_progress import progress_for_pyrogram
 
-RenameBot = Client(
+FoxrenameBot = Client(
     session_name=Config.SESSION_NAME,
     api_id=Config.API_ID,
     api_hash=Config.API_HASH,
@@ -28,7 +28,7 @@ RenameBot = Client(
 )
 
 
-@RenameBot.on_message(filters.private & filters.command("start"))
+@Foxrename_bot.on_message(filters.private & filters.command("start"))
 async def start_handler(bot: Client, event: Message):
     await AddUserToDatabase(bot, event)
     FSub = await ForceSub(bot, event)
@@ -39,15 +39,15 @@ async def start_handler(bot: Client, event: Message):
         quote=True,
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("Support Group", url="https://t.me/DevsZone"),
-                 InlineKeyboardButton("Bots Channel", url="https://t.me/Discovery_Updates")],
-                [InlineKeyboardButton("Developer - @AbirHasan2005", url="https://t.me/AbirHasan2005")]
+                [InlineKeyboardButton("Support Group", url="https://t.me/tamilmoviegroupss")
+                 InlineKeyboardButton("Our Channel", url="https://t.me/TAMIL_HD_MOVIES_4k")],
+                [InlineKeyboardButton("Developer -@CRYPTO_CRIMINAL", url="https://t.me/CRYPTO_CRIMINAL")]
             ]
         )
     )
 
 
-@RenameBot.on_message(filters.private & (filters.video | filters.document | filters.audio))
+@Foxrename_Bot.on_message(filters.private & (filters.video | filters.document | filters.audio))
 async def rename_handler(bot: Client, event: Message):
     await AddUserToDatabase(bot, event)
     FSub = await ForceSub(bot, event)
@@ -156,7 +156,7 @@ async def rename_handler(bot: Client, event: Message):
             await reply_.edit("Sorry Unkil,\n5 Minutes Passed! I can't wait more. Send me File Again to Rename.")
 
 
-@RenameBot.on_message(filters.private & filters.photo & ~filters.edited)
+@Foxrename_Bot.on_message(filters.private & filters.photo & ~filters.edited)
 async def photo_handler(bot: Client, event: Message):
     await AddUserToDatabase(bot, event)
     FSub = await ForceSub(bot, event)
@@ -167,7 +167,7 @@ async def photo_handler(bot: Client, event: Message):
     await editable.edit("Permanent Custom Thumbnail Saved Successfully!")
 
 
-@RenameBot.on_message(filters.private & filters.command(["delete_thumbnail", "delete_thumb", "del_thumb", "delthumb"]) & ~filters.edited)
+@Foxrename_Bot.on_message(filters.private & filters.command(["delete_thumbnail", "delete_thumb", "del_thumb", "delthumb"]) & ~filters.edited)
 async def delete_thumb_handler(bot: Client, event: Message):
     await AddUserToDatabase(bot, event)
     FSub = await ForceSub(bot, event)
@@ -183,7 +183,7 @@ async def delete_thumb_handler(bot: Client, event: Message):
     )
 
 
-@RenameBot.on_message(filters.private & filters.command(["show_thumbnail", "show_thumb", "showthumbnail", "showthumb"]) & ~filters.edited)
+@Foxrename_Bot.on_message(filters.private & filters.command(["show_thumbnail", "show_thumb", "showthumbnail", "showthumb"]) & ~filters.edited)
 async def show_thumb_handler(bot: Client, event: Message):
     await AddUserToDatabase(bot, event)
     FSub = await ForceSub(bot, event)
@@ -214,7 +214,7 @@ async def show_thumb_handler(bot: Client, event: Message):
         await event.reply_text("No Thumbnail Found in Database!\nSend a Thumbnail to Save.", quote=True)
 
 
-@RenameBot.on_message(filters.private & filters.command("settings"))
+@Foxrename_bot.on_message(filters.private & filters.command("settings"))
 async def settings_handler(bot: Client, event: Message):
     await AddUserToDatabase(bot, event)
     FSub = await ForceSub(bot, event)
@@ -226,7 +226,7 @@ async def settings_handler(bot: Client, event: Message):
     await OpenSettings(editable, user_id=event.from_user.id)
 
 
-@RenameBot.on_callback_query()
+@Foxrename_bot.on_callback_query()
 async def callback_handlers(bot: Client, cb: CallbackQuery):
     if "closeMeh" in cb.data:
         await cb.message.delete(True)
